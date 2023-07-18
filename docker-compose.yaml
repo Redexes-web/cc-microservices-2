@@ -3,6 +3,8 @@ services:
   authentication-service:
     build:
       context: ./Auth
+    volumes:
+      - ./Auth:/app
     restart: always
     networks:
       - app-network
