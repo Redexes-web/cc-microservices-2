@@ -3,11 +3,13 @@ services:
   authentication-service:
     build:
       context: ./Auth
+    restart: always
     networks:
       - app-network
   api-gateway:
     build:
       context: ./APIGateway
+    restart: always
     ports:
       - 3000:3000
     networks:
