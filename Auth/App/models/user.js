@@ -24,6 +24,15 @@ const userSchema = new Schema(
 				'Le mot de passe doit contenir au moins 8 caractères dont au moins 1 chiffre et une majuscule',
 			],
 		},
+		roles: {
+			type: [
+				{
+					type: String,
+					enum: ['user', 'admin'],
+				},
+			],
+			default: ['user'],
+		},
 	},
 	{ timestamps: true }
 );
