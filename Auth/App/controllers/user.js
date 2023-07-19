@@ -55,3 +55,22 @@ exports.login = async (req, res) => {
 		res.status(500).send('Error Authenticating User');
 	}
 };
+exports.getUserInfoFromToken = (req, res) => {
+	const userId = req.user.userId;
+	//find by user id:
+	const user = User.findById(userId)
+		.exec()
+		.then((user) => {
+			if (!user) {
+				return res.status(401).json({ error: 'User Not found' });
+			}
+			res.json({
+				id: user.id,
+				role: user.roles,
+			});
+		})
+		.catch((error) => {
+			console.error(error);
+			res.status(500).send('Error Authenticating User');
+		});
+};
