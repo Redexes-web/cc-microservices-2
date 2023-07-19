@@ -6,6 +6,16 @@ services:
     volumes:
       - ./Auth:/app
     restart: always
+    container_name: authentication-service
+    networks:
+      - app-network
+  products-service:
+    build:
+      context: ./Products
+    volumes:
+      - ./Products:/app
+    restart: always
+    container_name: products-service
     networks:
       - app-network
   api-gateway:
